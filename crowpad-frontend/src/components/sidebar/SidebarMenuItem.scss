@@ -1,0 +1,25 @@
+.sidebarmenuitem {
+  cursor: pointer;
+  border-radius: 0px 20px 20px 0px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: #ecf3f977;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  .sidebarmenuitem-title {
+    margin-left: 32px;
+  }
+}
+.sidebarmenuitem:hover {
+  color: #ecf3f9ff;
+}
+.sidebarmenuitem.selected {
+  background-color: #ecf3f919;
+}
