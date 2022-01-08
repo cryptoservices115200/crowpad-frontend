@@ -1,0 +1,27 @@
+.lockerpage {
+  .pageportal {
+    margin-top: 40px;
+    padding-top: 40px;
+    .chakra-tabs {
+      margin-top: 40px;
+      .chakra-tabs__tablist {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: rgba(0, 40, 104, 0.5);
+      }
+      @media only screen and (max-width: 576px) {
+        .chakra-tabs__tablist {
+          flex-direction: column;
+        }
+      }
+      .chakra-tabs__tab-panels {
+      }
+    }
+  }
+}

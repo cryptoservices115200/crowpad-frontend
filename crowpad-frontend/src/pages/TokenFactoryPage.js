@@ -21,51 +21,53 @@ const TokenFactoryPage = () => {
     borderRadius: '10px',
   };
   return (
-    <Page title="Token Factory" description="Create Or Manage Your Own Token">
-      <PagePortal>
-        <PagePortalStatus
-          number="2"
-          unit="Tokens"
-          description="Created on BSC Smart Chain Testnet"
-        ></PagePortalStatus>
-        <Tabs variant="unstyled" align="center">
-          <TabList>
-            <Tab _selected={tabSelectStyle}>Create Token</Tab>
-            <Tab _selected={tabSelectStyle}>Manage Tokens</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Select
-                placeholder="Standard Token"
-                maxWidth="462px"
-                marginTop="27px"
-              />
-              <div className="createtoken">
-                <div className="createtoken-left">
-                  <LineInput placeholder="Token Name"></LineInput>
-                  <LineInput placeholder="Token Symbol"></LineInput>
-                  <LineInput placeholder="Token Decimal"></LineInput>
-                  <LineInput placeholder="Token Total Supply"></LineInput>
-                  <Button padding="11px 35px">Create</Button>
-                </div>
-                <div className="createtoken-right">
-                  <div className="createtoken-instruction-title">
-                    Standard Token Features:
+    <div className="tokenfactorypage">
+      <Page title="Token Factory" description="Create Or Manage Your Own Token">
+        <PagePortal>
+          <PagePortalStatus
+            number="2"
+            unit="Tokens"
+            description="Created on BSC Smart Chain Testnet"
+          ></PagePortalStatus>
+          <Tabs variant="unstyled" align="center">
+            <TabList>
+              <Tab _selected={tabSelectStyle}>Create Token</Tab>
+              <Tab _selected={tabSelectStyle}>Manage Tokens</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Select
+                  placeholder="Standard Token"
+                  maxWidth="462px"
+                  marginTop="27px"
+                />
+                <div className="createtoken">
+                  <div className="createtoken-left">
+                    <LineInput placeholder="Token Name"></LineInput>
+                    <LineInput placeholder="Token Symbol"></LineInput>
+                    <LineInput placeholder="Token Decimal"></LineInput>
+                    <LineInput placeholder="Token Total Supply"></LineInput>
+                    <Button padding="11px 35px">Create</Button>
                   </div>
-                  <div className="createtoken-instruction-description">
-                    - Basic token with all standard features <br></br>- Perfect
-                    for utility based projects such as charting tools
+                  <div className="createtoken-right">
+                    <div className="createtoken-instruction-title">
+                      Standard Token Features:
+                    </div>
+                    <div className="createtoken-instruction-description">
+                      - Basic token with all standard features <br></br>-
+                      Perfect for utility based projects such as charting tools
+                    </div>
                   </div>
                 </div>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <p>two!</p>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </PagePortal>
-    </Page>
+              </TabPanel>
+              <TabPanel>
+                <p>two!</p>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </PagePortal>
+      </Page>
+    </div>
   );
 };
 
