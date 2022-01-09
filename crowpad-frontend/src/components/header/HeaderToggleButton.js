@@ -1,8 +1,8 @@
 import React from 'react';
 
-const HeaderToggleButton = () => {
+const HeaderToggleButton = props => {
   return (
-    <button>
+    <button onClick={props.onClick}>
       <img
         src="./assets/header-toggle-button.png"
         alt="Header Toggle Button"

@@ -2,12 +2,19 @@ import React from 'react';
 import HeaderToggleButton from './HeaderToggleButton';
 import ConnectWalletButton from './ConnectWalletButton';
 import './Header.scss';
-const Header = () => {
+import { connect } from 'react-redux';
+import { openSidebar } from '../../actions/sidebar';
+const Header = ({ openSidebar }) => {
+  const handleToggleButtonClick = e => {
+    openSidebar();
+  };
   return (
     <div className="crow-header">
       <div className="crow-header-left">
         <div className="crow-header-toggle-button">
-          <HeaderToggleButton></HeaderToggleButton>
+          <HeaderToggleButton
+            onClick={handleToggleButtonClick}
+          ></HeaderToggleButton>
         </div>
         <div className="crow-header-logo">
           <div className="crow-header-logo-icon">
@@ -23,4 +30,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect(null, { openSidebar })(Header);

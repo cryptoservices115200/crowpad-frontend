@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SidebarCloseButton = () => {
+const SidebarCloseButton = props => {
   return (
-    <button>
+    <button onClick={props.onClick}>
       <img
         src="./assets/sidebar-close-button.png"
         alt="Sidebar Close Button"
