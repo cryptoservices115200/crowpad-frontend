@@ -4,14 +4,8 @@ import PagePortal from '../components/common/PagePortal';
 import PagePortalStatus from '../components/common/PagePortalStatus';
 import LineInput from '../components/common/LineInput';
 import Button from '../components/common/Button';
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Select,
-} from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import Select from 'react-select';
 
 import './TokenFactoryPage.scss';
 const TokenFactoryPage = () => {
@@ -20,6 +14,11 @@ const TokenFactoryPage = () => {
     background: 'rgba(0, 40, 104, 0.1)',
     borderRadius: '10px',
   };
+  const options = [
+    { value: 1, label: 'Standard Token', selected: true },
+    { value: 2, label: 'Liquidity Generator Token' },
+  ];
+
   return (
     <div className="tokenfactorypage">
       <Page title="Token Factory" description="Create Or Manage Your Own Token">
@@ -37,10 +36,15 @@ const TokenFactoryPage = () => {
             <TabPanels>
               <TabPanel>
                 <Select
-                  placeholder="Standard Token"
                   maxWidth="462px"
                   marginTop="27px"
-                />
+                  className="crow-select"
+                  classNamePrefix="crow"
+                  options={options}
+                  value={options.filter(
+                    option => option.label === 'Standard Token'
+                  )}
+                ></Select>
                 <div className="createtoken">
                   <div className="createtoken-left">
                     <LineInput placeholder="Token Name"></LineInput>

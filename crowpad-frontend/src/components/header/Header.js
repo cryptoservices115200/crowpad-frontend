@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderToggleButton from './HeaderToggleButton';
 import ConnectWalletButton from './ConnectWalletButton';
 import './Header.scss';
 import { connect } from 'react-redux';
 import { openSidebar } from '../../actions/sidebar';
 const Header = ({ openSidebar }) => {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const handleToggleButtonClick = e => {
     openSidebar();
   };
   return (
-    <div className="crow-header">
+    <div className={offset > 30 ? 'crow-header active' : 'crow-header'}>
       <div className="crow-header-left">
         <div className="crow-header-toggle-button">
           <HeaderToggleButton
