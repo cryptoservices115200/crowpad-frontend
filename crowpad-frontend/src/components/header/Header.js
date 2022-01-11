@@ -4,12 +4,12 @@ import ConnectWalletButton from './ConnectWalletButton';
 import './Header.scss';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { openSidebar } from '../../actions/sidebar';
+import { connect as connectWallet } from '../../actions/blockchain';
 
 const Header = ({ openSidebar }) => {
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(window.pageYOffset);
   const dispatch = useDispatch();
   const blockchain = useSelector(state => state.blockchain);
-  const data = useSelector(state => state.data);
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener('scroll', onScroll);
@@ -18,6 +18,11 @@ const Header = ({ openSidebar }) => {
   }, []);
   const handleToggleButtonClick = e => {
     openSidebar();
+  };
+  const handleConnectWalletButtonClick = e => {
+    if (blockchain.loading || blockchain.account) return;
+    e.preventDefault();
+    dispatch(connectWallet());
   };
   return (
     <div className={offset > 30 ? 'crow-header active' : 'crow-header'}>
@@ -35,7 +40,20 @@ const Header = ({ openSidebar }) => {
         </div>
       </div>
       <div className="crow-header-right">
-        <ConnectWalletButton></ConnectWalletButton>
+        <ConnectWalletButton onClick={handleConnectWalletButtonClick}>
+          {blockchain.loading
+            ? 'Loading...'
+            : blockchain.account
+            ? blockchain.account.slice(0, 5) +
+              '...' +
+              blockchain.account.slice(-4)
+            : 'Connect Wallet'}
+        </ConnectWalletButton>
+        {blockchain.errorMsg ? (
+          <div className="crow-header-error">{blockchain.errorMsg}</div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

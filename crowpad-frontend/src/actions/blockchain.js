@@ -2,8 +2,6 @@
 import Web3EthContract from 'web3-eth-contract';
 import Web3 from 'web3';
 import SmartContract from '../contracts/MCFSimpleFactory.sol/MCFSimpleFactory.json';
-// log
-import { fetchData } from '../actions/data';
 
 const connectRequest = () => {
   return {
@@ -49,10 +47,10 @@ export const connect = () => {
           method: 'net_version',
         });
         // const NetworkData = await SmartContract.networks[networkId];
-        if (networkId === 1) {
+        if (networkId == 338) {
           // IMPORTANT. ONCE YOUR CONTRACT IS ON THE MAIN NET, SWITCH THIS NUMBER TO 1.
           const SmartContractObj = new Web3EthContract(
-            SmartContract,
+            SmartContract.abi,
             '0x14dDb249c6CfDC957A6B2108902C6F2996D79cDe' // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
           dispatch(
@@ -71,7 +69,7 @@ export const connect = () => {
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed('Change network to Ethereum.'));
+          dispatch(connectFailed('Change network to Cronos TestNet.'));
         }
       } catch (err) {
         dispatch(connectFailed('Something went wrong.'));
@@ -85,6 +83,6 @@ export const connect = () => {
 export const updateAccount = account => {
   return async dispatch => {
     dispatch(updateAccountRequest({ account: account }));
-    dispatch(fetchData(account));
+    //dispatch(fetchData(account));
   };
 };

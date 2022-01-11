@@ -16,7 +16,7 @@ const Sidebar = ({ isOpened, isVisible, closeSidebar }) => {
   return (
     <div
       className={!isOpened ? 'sidebar-wrapper' : 'sidebar-wrapper active'}
-      style={{ zIndex: isVisible ? 1 : -1 }}
+      style={{ zIndex: isVisible ? 2 : -1 }}
       onMouseDown={handleMouseDown}
     >
       <div className={!isOpened ? 'sidebar' : 'sidebar active'}>

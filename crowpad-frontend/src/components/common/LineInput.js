@@ -6,6 +6,9 @@ const LineInput = props => {
       variant="outline"
       fontFamily="Poppins"
       placeholder={props.placeholder}
+      name={props.name}
+      value={props.value}
+      onChange={props.onChange}
       borderColor="rgba(0, 40, 104, 0.7)"
       padding="15px"
       height="50px"
