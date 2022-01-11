@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import HeaderToggleButton from './HeaderToggleButton';
 import ConnectWalletButton from './ConnectWalletButton';
 import './Header.scss';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { openSidebar } from '../../actions/sidebar';
+
 const Header = ({ openSidebar }) => {
   const [offset, setOffset] = useState(0);
-
+  const dispatch = useDispatch();
+  const blockchain = useSelector(state => state.blockchain);
+  const data = useSelector(state => state.data);
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener('scroll', onScroll);
